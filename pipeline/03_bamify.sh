@@ -4,10 +4,9 @@
 CPU=8
 module load samtools
 FOLDER=results
-	#Af293
-for STRAIN in A1163
+for STRAIN in A1163 Af293
 do
-	#parallel -j 6 samtools view --threads $CPU -O BAM -o {.}.bam {} ::: $(find $FOLDER/STAR_$STRAIN -name "*.sam")
+	parallel -j 6 samtools view --threads $CPU -O BAM -o {.}.bam {} ::: $(find $FOLDER/STAR_$STRAIN -name "*.sam")
 	echo "$FOLDER/STAR_$STRAIN"
 	mkdir -p $FOLDER/STAR_${STRAIN}_sort
 	for file in $(find $FOLDER/STAR_$STRAIN -name "*.bam")
