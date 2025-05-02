@@ -136,7 +136,7 @@ pheatmap(sampleDistMatrix,
          clustering_distance_cols=sampleDists,
          col=colors)
 
-pdf("plots/PCA_expresion.pdf")
+pdf("plots/PCA_expression.pdf")
 pcaData <- plotPCA(vsd, intgroup=c("genotype","condition","replicate"), returnData=TRUE)
 percentVar <- round(100 * attr(pcaData, "percentVar"))
 
@@ -188,7 +188,7 @@ res <- results(dds, contrast=c("condition","Azole","GMM"))
 res
 
 resultsNames(dds)
-resLFC <- lfcShrink(dds, coef="condition_Azole_vs_GMM", type="apeglm")
+resLFC <- lfcShrink(dds, coef="condition_GMM_vs_Azole", type="apeglm")
 resLFC
 summary(resLFC)
 summary(res)
